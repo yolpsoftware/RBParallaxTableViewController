@@ -42,12 +42,11 @@ static CGFloat ImageHeight  = 300.0;
         
         NSMutableArray *imageViews = [NSMutableArray arrayWithCapacity:[images count]];
         for (UIImage *image in images) {
-            UIImageView *imageView  = [[[UIImageView alloc] initWithImage:image] autorelease];
+            UIImageView *imageView  = [[UIImageView alloc] initWithImage:image];
             
             [imageViews addObject:imageView];
             [_imageScroller addSubview:imageView];
         }
-        _imageViews = [imageViews retain];
         
         _transparentScroller = [[UIScrollView alloc] initWithFrame:CGRectZero];
         _transparentScroller.backgroundColor                = [UIColor clearColor];
@@ -148,7 +147,7 @@ static CGFloat ImageHeight  = 300.0;
         cell = [tableView dequeueReusableCellWithIdentifier:windowReuseIdentifier];
         if (!cell) {
             
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:windowReuseIdentifier] autorelease];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:windowReuseIdentifier];
             cell.backgroundColor             = [UIColor clearColor];
             cell.contentView.backgroundColor = [UIColor clearColor];
             cell.selectionStyle              = UITableViewCellSelectionStyleNone;
@@ -158,7 +157,7 @@ static CGFloat ImageHeight  = 300.0;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
         if (!cell) {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier] autorelease];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
             cell.contentView.backgroundColor = [UIColor blueColor];
             cell.selectionStyle              = UITableViewCellSelectionStyleNone;
             
@@ -172,17 +171,6 @@ static CGFloat ImageHeight  = 300.0;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self updateOffsets];
-}
-
-#pragma mark - Dealloc
-
-- (void)dealloc {
-    RB_SAFE_RELEASE(_imageViews);
-    RB_SAFE_RELEASE(_imageScroller);
-    RB_SAFE_RELEASE(_transparentScroller);
-    RB_SAFE_RELEASE(_tableView);
-    
-    [super dealloc];
 }
 
 @end

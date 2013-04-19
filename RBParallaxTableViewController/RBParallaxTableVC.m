@@ -122,7 +122,7 @@ static CGFloat ImageHeight  = 300.0;
         cell = [tableView dequeueReusableCellWithIdentifier:windowReuseIdentifier];
         if (!cell) {
             
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:windowReuseIdentifier] autorelease];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:windowReuseIdentifier];
             cell.backgroundColor             = [UIColor clearColor];
             cell.contentView.backgroundColor = [UIColor clearColor];
             cell.selectionStyle              = UITableViewCellSelectionStyleNone;
@@ -130,7 +130,7 @@ static CGFloat ImageHeight  = 300.0;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
         if (!cell) {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier] autorelease];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellReuseIdentifier];
             cell.contentView.backgroundColor = [UIColor blueColor];
             cell.selectionStyle              = UITableViewCellSelectionStyleNone;
 
@@ -147,13 +147,5 @@ static CGFloat ImageHeight  = 300.0;
 }
 
 #pragma mark - Dealloc
-
-- (void)dealloc {
-    RB_SAFE_RELEASE(_imageView);
-    RB_SAFE_RELEASE(_imageScroller);
-    RB_SAFE_RELEASE(_tableView);
-    
-    [super dealloc];
-}
 
 @end
